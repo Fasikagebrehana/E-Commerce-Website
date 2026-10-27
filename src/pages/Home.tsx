@@ -2,6 +2,7 @@
 import { getProducts } from '../api/products';
 import { useState, useEffect } from 'react';
 import ProductsCard from '../components/products/productsCard';
+// import product from '../components/products/productsCard';
 
 const Home = () => {
     const [products, setProducts] = useState<any[]>([]);
