@@ -1,8 +1,4 @@
 import { getProducts } from '../api/products';
-<<<<<<< Updated upstream
-import { useState, useEffect } from 'react';
-import ProductsCard from '../components/products/productsCard';
-=======
 import { useFetch } from '../hooks/useFetch';
 import ProductGrid from '../components/products/ProductGrid';
 import Hero from '../components/home/Hero';
@@ -16,7 +12,6 @@ const PERKS = [
     { icon: ReturnIcon, title: "Easy returns", text: "30 days to change your mind" },
     { icon: ShieldIcon, title: "Secure checkout", text: "Visa, Mastercard & Amex" },
 ];
->>>>>>> Stashed changes
 
 const Home = () => {
     const featured = useFetch("home-featured", () => getProducts({ limit: 8, sortBy: "rating", order: "desc" }));

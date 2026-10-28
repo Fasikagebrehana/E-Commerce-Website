@@ -1,7 +1,4 @@
 
-<<<<<<< Updated upstream
-import './App.css'
-=======
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { AuthProvider } from './context/AuthProvider'
@@ -14,14 +11,10 @@ import Cart from './pages/Cart'
 import Login from './pages/Login'
 import Account from './pages/Account'
 import NotFound from './pages/NotFound'
->>>>>>> Stashed changes
 
 function App() {
 
   return (
-<<<<<<< Updated upstream
-    <>  </>
-=======
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
@@ -40,7 +33,6 @@ function App() {
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>
->>>>>>> Stashed changes
   )
 }
 
