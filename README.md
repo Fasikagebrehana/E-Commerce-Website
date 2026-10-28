@@ -11,8 +11,8 @@ Shop top-rated beauty, tech, home, and fashion products with a clean UI, real-ti
 ## Screenshot
 
 <!-- Replace the path below with your actual screenshot -->
-![Cartly Homepage](./screenshot1.png)
-![Cartly productspage](./screenshot2.png)
+![Cartly Homepage](./Screenshot1.png)
+![Cartly productspage](./Screenshot2.png)
 
 ---
 
