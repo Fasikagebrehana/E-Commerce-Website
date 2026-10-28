@@ -70,7 +70,7 @@ Shop top-rated beauty, tech, home, and fashion products with a clean UI, real-ti
 ---
 
 ## Project Structure
-
+```
 src/
 ├── api/              # API clients (products, auth, cart helpers)
 ├── assets/           # Static assets
@@ -85,7 +85,7 @@ src/
 ├── pages/            # Route pages
 ├── types/            # TypeScript interfaces
 └── utils/            # Helpers (price, storage)text---
-
+```
 ## Getting Started
 
 ### Prerequisites
