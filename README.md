@@ -1,75 +1,112 @@
-# React + TypeScript + Vite
+# Cartly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A modern, fully responsive e-commerce frontend** built with React, TypeScript, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+Shop top-rated beauty, tech, home, and fashion products with a clean UI, real-time cart, search, filtering, and authentication — powered by the [DummyJSON](https://dummyjson.com) API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live Demo:** [https://e-commerce-website-gamma-blue.vercel.app](https://e-commerce-website-gamma-blue.vercel.app)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Screenshot
 
-## Expanding the ESLint configuration
+<!-- Replace the path below with your actual screenshot -->
+![Cartly Homepage](./screenshot1.png)
+![Cartly productspage](./screenshot2.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Beautiful Homepage**
+  - Hero section with featured product imagery
+  - Featured products, New Arrivals, and Hot Deals sections
+  - Shop-by-Category grid
+  - Customer testimonials
+  - Free shipping / Easy returns / Secure checkout perks
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Product Catalog**
+  - Browse all products or filter by category
+  - Full-text search
+  - Sort by: rating, newest, price (low→high / high→low), biggest discount, name
+  - Pagination (12 products per page)
+  - Responsive product grid with loading skeletons
 
+- **Product Details**
+  - High-quality images, pricing with discount, stock status
+  - Add to cart with quantity control
+
+- **Shopping Cart**
+  - Persistent cart (localStorage)
+  - Quantity updates & item removal
+  - Live subtotal calculation
+  - Stock-aware quantity limits
+
+- **Authentication**
+  - Login with DummyJSON users
+  - Session persistence
+  - Protected Account page
+
+- **UI / UX**
+  - Fully responsive (mobile → desktop)
+  - Clean, modern design with Tailwind CSS
+  - Smooth loading states and empty states
+  - Accessible navigation and controls
+
+---
+
+## Tech Stack
+
+| Technology       | Purpose                          |
+|------------------|----------------------------------|
+| **React 19**     | UI library                       |
+| **TypeScript**   | Type safety                      |
+| **Vite**         | Build tool & dev server          |
+| **Tailwind CSS** | Utility-first styling            |
+| **React Router** | Client-side routing              |
+| **Axios**        | HTTP client                      |
+| **DummyJSON**    | Mock REST API (products, auth)   |
+
+---
+
+## Project Structure
+
+src/
+├── api/              # API clients (products, auth, cart helpers)
+├── assets/           # Static assets
+├── components/
+│   ├── common/       # Shared UI (Pagination, icons, etc.)
+│   ├── home/         # Homepage sections (Hero, CategoryGrid, etc.)
+│   ├── layout/       # Header, Footer, Layout shell
+│   ├── productDetails/
+│   └── products/     # ProductGrid, cards
+├── context/          # AuthProvider & CartProvider
+├── hooks/            # Custom hooks (useFetch, etc.)
+├── pages/            # Route pages
+├── types/            # TypeScript interfaces
+└── utils/            # Helpers (price, storage)text---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm (or yarn / pnpm)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Fasikagebrehana/E-Commerce-Website.git
+cd E-Commerce-Website
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+# Install dependencies
+npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Start the development server
+npm run devThe app will be available at http://localhost:5173.Available Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 
-```
+AuthorFasika Gebrehana
+GitHub: @Fasikagebrehana
