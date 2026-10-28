@@ -100,13 +100,14 @@ src/
 git clone https://github.com/Fasikagebrehana/E-Commerce-Website.git
 cd E-Commerce-Website
 ```
-
+```
 # Install dependencies
 npm install
 
 # Start the development server
 npm run devThe app will be available at http://localhost:5173.Available Scripts
-
+```
 
 AuthorFasika Gebrehana
+
 GitHub: @Fasikagebrehana
