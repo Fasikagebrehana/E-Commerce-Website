@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cartContext";
 import { useAuth } from "../context/authContext";
-import { createCart } from "../api/carts";
+import { initializePayment } from "../api/payments/chapa";
 import { formatPrice } from "../utils/price";
 import { CartIcon, TrashIcon } from "../components/common/icons";
 
@@ -10,10 +10,9 @@ const FREE_SHIPPING_THRESHOLD = 50;
 const SHIPPING_FEE = 4.99;
 
 export default function Cart() {
-    const { items, count, subtotal, updateQuantity, removeItem, clear } = useCart();
+    const { items, count, subtotal, updateQuantity, removeItem } = useCart();
     const { user } = useAuth();
     const [placing, setPlacing] = useState(false);
-    const [orderId, setOrderId] = useState<number | null>(null);
     const [orderError, setOrderError] = useState("");
 
     const shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
@@ -24,28 +23,18 @@ export default function Cart() {
         setPlacing(true);
         setOrderError("");
         try {
-            const cart = await createCart(user.id, items.map((item) => ({ id: item.id, quantity: item.quantity })));
-            setOrderId(cart.id);
-            clear();
+            const { checkoutUrl } = await initializePayment(
+                items.map((item) => ({ id: item.id, quantity: item.quantity })),
+                user
+            );
+            // Chapa is another site, so this is a full browser redirect, not navigate().
+            // the cart is only cleared on /payment/result once the payment is verified
+            window.location.href = checkoutUrl;
         } catch {
-            setOrderError("Couldn't place your order. Please try again.");
-        } finally {
+            setOrderError("Couldn't start the payment. Please try again.");
             setPlacing(false);
         }
     };
-
-    if (orderId !== null) {
-        return (
-            <div className="mx-auto max-w-lg px-4 py-20 text-center">
-                <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-100 text-3xl text-emerald-600">✓</div>
-                <h1 className="mt-6 text-3xl font-semibold text-gray-900">Order placed!</h1>
-                <p className="mt-2 text-gray-500">Thanks, {user?.firstName}. Your order number is #{orderId}.</p>
-                <Link to="/products" className="mt-8 inline-block rounded-full bg-gray-900 px-7 py-3 font-medium text-white hover:bg-gray-700">
-                    Continue shopping
-                </Link>
-            </div>
-        );
-    }
 
     if (items.length === 0) {
         return (
@@ -127,7 +116,7 @@ export default function Cart() {
                     {user ? (
                         <button type="button" onClick={placeOrder} disabled={placing}
                             className="mt-6 h-12 w-full rounded-full bg-gray-900 font-medium text-white hover:bg-gray-700 disabled:bg-gray-400">
-                            {placing ? "Placing order..." : "Place order"}
+                            {placing ? "Redirecting to Chapa..." : "Pay with Chapa"}
                         </button>
                     ) : (
                         <Link to="/login?redirect=/cart"

@@ -11,6 +11,7 @@ import Cart from './pages/Cart'
 import Login from './pages/Login'
 import Account from './pages/Account'
 import NotFound from './pages/NotFound'
+import PaymentResult from './pages/PaymentResult'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/payment/result" element={<PaymentResult />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
